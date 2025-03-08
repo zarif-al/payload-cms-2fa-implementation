@@ -33,6 +33,8 @@ Here are the steps we used to implement a custom authentication flow:
    - If the OTP is valid then the request is forwarded to Payload's default endpoint for user authentication.
    - If not then I am using Payload's translation object to return appropriate error messages. This is to keep the experience consistent with Payload's default authentication endpoint as that also uses this object for error messages.
 
+   > For this to work properly you will need to be able to have the domain URL in the environment. In this example I have set it to the `NEXT_PUBLIC_SERVER_URL` environment variable.
+
 4. Create a [clone](<src/app/(payload)/translations/en.ts>) of Payload's `en` translations and overwrite the translation for `emailOrPasswordIncorrect`, to include the `otp` keyword. This is to ensure the error messages are ambiguous and no information is leaked.
 
    > We are using Payload's default login endpoint, which uses Payload's default translations.
