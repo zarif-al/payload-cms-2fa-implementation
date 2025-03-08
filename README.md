@@ -40,7 +40,7 @@ Here are the steps we used to implement a custom authentication flow:
    > We are using Payload's default login endpoint, which uses Payload's default translations.
    > If we try to only overwrite the `en.emailOrPasswordIncorrect` property, the whole `en` translation object gets overwritten, so we had to import their full translation object and update the `emailOrPasswordIncorrect` property ourselves.
 
-5. Update the `admin` property of the Payload `config` like so:
+5. Next you need to make the following updates to the Payload config file:
 
    1. Update the default login route to be `deprecated-login`.
    2. Add a `customLogin` property to the `components.views` property. Set the route for our custom login component as `/login`
@@ -63,4 +63,4 @@ This solution works due to the following reasons.
 ## Issues
 
 1. I am not confident on my approach with error handling and overwriting the entire english translations object. This does not scale well when I have to support multiple languages.
-2. I was not able to test if CORS is workin properly.
+2. I was not able to test if CORS is working properly.
