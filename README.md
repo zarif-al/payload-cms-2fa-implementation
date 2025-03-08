@@ -56,7 +56,7 @@ This solution works due to the following reasons.
 
 1. The custom views in Payload are public by default
 
-2. We have changed Payload's default login route to `/deprecated-login` and set a permanent redirect in NextJS to redirect users to `/admin/login` from `/deprecated-login`
+2. We have changed Payload's default login route to `/deprecated-login` and set a permanent redirect in NextJS to redirect users to `/admin/login` from `/admin/deprecated-login`
    .
 3. The custom view in `/login` is identical to Payload's default login and re-uses as much code as possible from Payload's codebase.
 
