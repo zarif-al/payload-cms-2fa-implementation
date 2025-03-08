@@ -93,26 +93,29 @@ export async function sendOtp(email: string): Promise<string | true> {
 
   // Send the OTP to the user
   try {
+    // TODO: Remove this when the email service is setup
+    payload.logger.info(`Sending OTP to ${email}. OTP: ${otp}`)
+
     await payload.sendEmail({
       to: email,
       subject: 'Merton College | Login OTP',
       html: `
-      <div style="font-family: Arial, sans-serif;">
-        <p style="margin-bottom: 20px; font-size: 16px;">
-          Please login using the OTP provided below. If you did not request this OTP, please ignore this email.
-        </p>
+        <div style="font-family: Arial, sans-serif;">
+          <p style="margin-bottom: 20px; font-size: 16px;">
+            Please login using the OTP provided below. If you did not request this OTP, please ignore this email.
+          </p>
 
-        <div style="margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; background-color: #f5f5f5; padding: 16px; border-radius: 6px; font-size: 16px; line-height: 1.5; ">
-          <span><strong>OTP:</strong> ${otp}</span>
+          <div style="margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; background-color: #f5f5f5; padding: 16px; border-radius: 6px; font-size: 16px; line-height: 1.5; ">
+            <span><strong>OTP:</strong> ${otp}</span>
+          </div>
+
+          <p style="margin-bottom: 20px; font-size: 16px;">
+            <strong>
+              This OTP is valid for 2 minutes.
+            </strong>
+          </p>
         </div>
-
-        <p style="margin-bottom: 20px; font-size: 16px;">
-          <strong>
-            This OTP is valid for 2 minutes.
-          </strong>
-        </p>
-      </div>
-    `,
+      `,
     })
   } catch (e) {
     payload.logger.error(e, 'Failed to send OTP email.')
