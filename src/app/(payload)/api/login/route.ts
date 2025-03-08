@@ -159,7 +159,6 @@ export async function POST(req: Request): Promise<Response> {
   modifiedHeaders.delete('Content-Type')
   modifiedHeaders.delete('Content-Length')
 
-  // TODO: Do I need the server URL?
   const usersLoginResponse = await fetch(process.env.NEXT_PUBLIC_SERVER_URL + '/api/users/login', {
     method,
     headers: headersWithCors({
